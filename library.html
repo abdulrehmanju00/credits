@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CreditFlow — 20 Screen Design Library</title>
+  <meta name="description" content="CreditFlow - Invoice, Billing, Credit Ledger & Customer Management Design System and Application.">
+  <meta property="og:title" content="CreditFlow — 20 Screen Design Library">
+  <meta property="og:description" content="CreditFlow - Invoice, Billing, Credit Ledger & Customer Management Design System and Application.">
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: Inter, system-ui, -apple-system, sans-serif; background: #F7F9FC; color: #14243A; margin: 0; }
+    header { background: #fff; border-bottom: 1px solid #e2e8ef; padding: 24px max(24px, calc((100% - 1200px) / 2)); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+    header h1 { font-size: 28px; margin: 0; color: #086d58; }
+    header p { color: #526178; margin: 8px 0 0; font-size: 14px; }
+    .header-actions { display: flex; align-items: center; gap: 12px; }
+    .header-badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 9999px; color: #065f46; font-size: 12px; font-weight: 600; }
+    .app-cta { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; background: #059669; color: #fff; text-decoration: none; border-radius: 8px; font-size: 13px; font-weight: 600; transition: background 0.15s ease; }
+    .app-cta:hover { background: #047857; }
+    main { max-width: 1200px; padding: 28px 18px; margin: auto; }
+    .note { background: #e5f7f0; border: 1px solid #c4e8db; padding: 15px 18px; border-radius: 12px; margin-bottom: 24px; line-height: 1.55; font-size: 14px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 20px; }
+    .card { border: 1px solid #e3eaf0; background: white; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.15s ease, box-shadow 0.15s ease; }
+    .card:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+    .thumb { display: block; background: #f5f8fa; aspect-ratio: 1.44; overflow: hidden; position: relative; }
+    .thumb img { height: 100%; width: 100%; object-fit: contain; }
+    .info { padding: 16px; display: flex; flex-direction: column; flex-grow: 1; }
+    .info strong { font-size: 16px; color: #0f172a; }
+    .meta { color: #637086; font-size: 13px; margin: 6px 0 14px; }
+    .actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: auto; }
+    .actions a { padding: 8px 14px; border-radius: 8px; background: #079B79; color: white; text-decoration: none; font-size: 13px; font-weight: 600; transition: background 0.15s ease; }
+    .actions a:hover { background: #058265; }
+    .actions a+ a { background: #e5f7f0; color: #076951; }
+    .actions a+ a:hover { background: #d1fae5; }
+    footer { text-align: center; padding: 36px; color: #65748a; font-size: 13px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>CreditFlow <span style="font-weight:400;color:#14243A">Design Library</span></h1>
+      <p>All 20 Google Stitch screen exports connected with working application navigation.</p>
+    </div>
+    <div class="header-actions">
+      <div class="header-badge">
+        <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#10b981;"></span>
+        20 Screens Connected
+      </div>
+      <a class="app-cta" href="/dashboard">
+        Open Application
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </header>
+  <main>
+    <div class="note">
+      <div>
+        <strong>CreditFlow Navigation:</strong> All 20 screens are connected. You can explore individual screens or jump straight into the live interactive application via the main dashboard.
+      </div>
+      <a class="app-cta" href="/dashboard" style="font-size:12px;padding:6px 14px;">Launch Dashboard &rarr;</a>
+    </div>
+    <section class="gallery">
+      <article class="card">
+        <a class="thumb" href="/screens/creditflow_sign_in_platform_overview/screen.png">
+          <img src="/screens/creditflow_sign_in_platform_overview/screen.png" alt="Login screenshot" loading="lazy">
+        </a>
+        <div class="info">
+          <strong>01. Login</strong>
+          <p class="meta">Route: /login · Source ZIP 1</p>
+          <div class="actions">
+            <a href="/login">Open Screen</a>
+            <a href="/screens/creditflow_sign_in_platform_overview/screen.png">View PNG</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <a class="thumb" href="/screens/creditflow_create_your_account/screen.png">
+          <img src="/screens/creditflow_create_your_account/screen.png" alt="Create account screenshot" loading="lazy">
+        </a>
+        <div class="info">
+          <strong>02. Create account</strong>
+          <p class="meta">Route: /signup · Source ZIP 1</p>
+          <div class="actions">
+            <a href="/signup">Open Screen</a>
+            <a href="/screens/creditflow_create_your_account/screen.png">View PNG</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <a class="thumb" href="/screens/creditflow_business_details_onboarding/screen.png">
+          <img src="/screens/creditflow_business_details_onboarding/screen.png" alt="Business onboarding screenshot" loading="lazy">
+        </a>
+        <div class="info">
+          <strong>03. Business onboarding</strong>
+          <p class="meta">Route: /onboarding · Source ZIP 1</p>
+          <div class="actions">
+            <a href="/onboarding">Open Screen</a>
+            <a href="/screens/creditflow_business_details_onboarding/screen.png">View PNG</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <a class="thumb" href="/screens/creditflow_main_dashboard/screen.png">
+          <img src="/screens/creditflow_main_dashboard/screen.png" alt="Dashboard / Overview screenshot" loading="lazy">
+        </a>
+        <div class="info">
+          <strong>04. Dashboard / Overview</strong>
+          <p class="meta">Route: /dashboard · Source ZIP 1</p>
+          <div class="actions">
+            <a href="/dashboard">Open Screen</a>
+            <a href="/screens/creditflow_main_dashboard/screen.png">View PNG</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <a class="thumb" href="/screens/creditflow_customers_directory/screen.png">
+          <img src="/screens/creditflow_customers_directory/screen.png" alt="Customers list screenshot" loading="lazy">
+        </a>
+        <div class="info">
+          <strong>05. Customers list</strong>
+          <p class="meta">Route: /customers · Source ZIP 1</p>
+          <div class="actions">
+            <a href="/customers">Open Screen</a>
+            <a href="/screens/creditflow_customers_directory/screen.png">View PNG</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <a class="thumb" href="/screens/creditflow_customer_profile_invoices/screen.png">
+          <img src="/screens/creditflow_customer_profile_invoices/screen.png" alt="Customer profile screenshot" loading="lazy">
+        </a>
+        <div class="info">
+          <strong>06. Customer profile</strong>
+          <p class="meta">Route: /customer-profile · Source ZIP 1</p>
+          <div class="actions">
+            <a href="/customer-profile">Open Screen</a>
+            <a href="/screens/creditflow_customer_profile_invoices/screen.png">View PNG</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <a class="thumb" href="/screens/creditflow_invoices_management/screen.png">
+          <img src="/screens/creditflow_invoices_management/screen.png" alt="Invoices list screenshot" loading="lazy">
+        </a>
+        <div class="info">
+          <strong>07. Invoices list</strong>
+          <p class="meta">Route: /invoices · Source ZIP 1</p>
+          <div class="actions">
+            <a href="/invoices">Open Screen</a>
+            <a href="/screens/creditflow_invoices_management/screen.png">View PNG</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <a class="thumb" href="/screens/creditflow_create_invoice/screen.png">
+          <img src="/screens/creditflow_create_invoice/screen.png" alt="Create invoice screenshot" loading="lazy">
+        </a>
+        <div class="info">
+          <strong>08. Create invoice</strong>
+          <p class="meta">Route: /create-invoice · Source ZIP 1</p>
+          <div class="actions">
+            <a href="/create-invoice">Open Screen</a>
+            <a href="/screens/creditflow_create_invoice/screen.png">View PNG</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <a class="thumb" href="/screens/creditflow_invoice_details/screen.png">
+          <img src="/screens/creditflow_invoice_details/screen.png" alt="Invoice details screenshot" loading="lazy">
+        </a>
+        <div class="info">
+          <strong>09. Invoice details</strong>
+          <p class="meta">Route: /invoice-details · Source ZIP 1</p>
+          <div class="actions">
+            <a href="/invoice-details">Open Screen</a>
+            <a href="/screens/creditflow_invoice_details/screen.png">View PNG</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <a class="thumb" href="/screens/creditflow_payments/screen.png">
+          <img src="/screens/creditflow_payments/screen.png" alt="Payments list screenshot" loading="lazy">
+        </a>
+        <div class="info">
+          <strong>10. Payments list</strong>
+          <p class="meta">Route: /payments · Source ZIP 1</p>
+          <div class="actions">
+            <a href="/payments">Open Screen</a>
+            <a href="/screens/creditflow_payments/screen.png">View PNG</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <a class="thumb" href="/screens/creditflow_record_payment/screen.png">
+          <img src="/screens/creditflow_record_payment/screen.png" alt="Record payment screenshot" loading="lazy">
+        </a>
+        <div class="info">
+          <strong>11. Record payment</strong>
+          <p class="meta">Route: /record-payment · Source ZIP 1</p>
+          <div class="actions">
+            <a href="/record-payment">Open Screen</a>
+            <a href="/screens/creditflow_record_payment/screen.png">View PNG</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <a class="thumb" href="/screens/creditflow_credit_ledger/screen.png">
+          <img src="/screens/creditflow_credit_ledger/screen.png" alt="Credit ledger screenshot" loading="lazy">
+        </a>
+        <div class="info">
+          <strong>12. Credit ledger</strong>
+          <p class="meta">Route: /credit-ledger · Source ZIP 1</p>
+          <div class="actions">
+            <a href="/credit-ledger">Open Screen</a>
+            <a href="/screens/creditflow_credit_ledger/screen.png">View PNG</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <a class="thumb" href="/screens/creditflow_payment_reminders/screen.png">
+          <img src="/screens/creditflow_payment_reminders/screen.png" alt="Payment reminders screenshot" loading="lazy">
+        </a>
+        <div class="info">
+          <strong>13. Payment reminders</strong>
+          <p class="meta">Route: /reminders · Source ZIP 1</p>
+          <div class="actions">
+            <a href="/reminders">Open Screen</a>
+            <a href="/screens/creditflow_payment_reminders/screen.png">View PNG</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <a class="thumb" href="/screens/creditflow_reminder_settings/screen.png">
+          <img src="/screens/creditflow_reminder_settings/screen.png" alt="Reminder settings screenshot" loading="lazy">
+        </a>
+        <div class="info">
+          <strong>14. Reminder settings</strong>
+          <p class="meta">Route: /reminder-settings · Source ZIP 1</p>
+          <div class="actions">
+            <a href="/reminder-settings">Open Screen</a>
+            <a href="/screens/creditflow_reminder_settings/screen.png">View PNG</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <a class="thumb" href="/screens/creditflow_reports_analytics/screen.png">
+          <img src="/screens/creditflow_reports_analytics/screen.png" alt="Reports & analytics screenshot" loading="lazy">
+        </a>
+        <div class="info">
+          <strong>15. Reports & analytics</strong>
+          <p class="meta">Route: /reports · Source ZIP 1</p>
+          <div class="actions">
+            <a href="/reports">Open Screen</a>
+            <a href="/screens/creditflow_reports_analytics/screen.png">View PNG</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <a class="thumb" href="/screens/creditflow_products_services/screen.png">
+          <img src="/screens/creditflow_products_services/screen.png" alt="Products & services screenshot" loading="lazy">
+        </a>
+        <div class="info">
+          <strong>16. Products & services</strong>
+          <p class="meta">Route: /products · Source ZIP 2</p>
+          <div class="actions">
+            <a href="/products">Open Screen</a>
+            <a href="/screens/creditflow_products_services/screen.png">View PNG</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <a class="thumb" href="/screens/creditflow_team_permissions/screen.png">
+          <img src="/screens/creditflow_team_permissions/screen.png" alt="Team & permissions screenshot" loading="lazy">
+        </a>
+        <div class="info">
+          <strong>17. Team & permissions</strong>
+          <p class="meta">Route: /team-permissions · Source ZIP 2</p>
+          <div class="actions">
+            <a href="/team-permissions">Open Screen</a>
+            <a href="/screens/creditflow_team_permissions/screen.png">View PNG</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <a class="thumb" href="/screens/creditflow_business_settings/screen.png">
+          <img src="/screens/creditflow_business_settings/screen.png" alt="Business settings screenshot" loading="lazy">
+        </a>
+        <div class="info">
+          <strong>18. Business settings</strong>
+          <p class="meta">Route: /settings · Source ZIP 2</p>
+          <div class="actions">
+            <a href="/settings">Open Screen</a>
+            <a href="/screens/creditflow_business_settings/screen.png">View PNG</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <a class="thumb" href="/screens/creditflow_subscription_billing/screen.png">
+          <img src="/screens/creditflow_subscription_billing/screen.png" alt="Subscription & billing screenshot" loading="lazy">
+        </a>
+        <div class="info">
+          <strong>19. Subscription & billing</strong>
+          <p class="meta">Route: /subscription-billing · Source ZIP 2</p>
+          <div class="actions">
+            <a href="/subscription-billing">Open Screen</a>
+            <a href="/screens/creditflow_subscription_billing/screen.png">View PNG</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <a class="thumb" href="/screens/creditflow_notifications/screen.png">
+          <img src="/screens/creditflow_notifications/screen.png" alt="Notifications screenshot" loading="lazy">
+        </a>
+        <div class="info">
+          <strong>20. Notifications</strong>
+          <p class="meta">Route: /notifications · Source ZIP 2</p>
+          <div class="actions">
+            <a href="/notifications">Open Screen</a>
+            <a href="/screens/creditflow_notifications/screen.png">View PNG</a>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+  <footer>CreditFlow — Design System & Screen Library</footer>
+</body>
+</html>

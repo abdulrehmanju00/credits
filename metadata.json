@@ -1,0 +1,8 @@
+{
+  "name": "CreditFlow",
+  "description": "CreditFlow - Invoice, Billing, Credit Ledger & Customer Management Design System and Application.",
+  "permissions": [],
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CreditFlow - Create your account</title>
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#ecfdf5',
+              100: '#d1fae5',
+              200: '#a7f3d0',
+              500: '#10b981',
+              600: '#059669',
+              700: '#047857',
+              800: '#065f46',
+              900: '#064e3b',
+            },
+            slate: {
+              850: '#152033',
+              900: '#0f172a'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Core Page Styles -->
+<style data-purpose="base-styling">
+    body {
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      background-color: #f7faf9;
+    }
+  </style>
+<!-- Perspective and Realistic Laptop Styling -->
+<style data-purpose="laptop-styling">
+    .laptop-frame {
+      border: 8px solid #1e2229;
+      border-radius: 14px 14px 2px 2px;
+      background: #11141a;
+      box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.25);
+    }
+    .laptop-base {
+      height: 10px;
+      background: linear-gradient(180deg, #d1d5db 0%, #9ca3af 100%);
+      border-radius: 0 0 16px 16px;
+      position: relative;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    }
+    .laptop-notch {
+      width: 68px;
+      height: 4px;
+      background: #6b7280;
+      border-radius: 0 0 4px 4px;
+      margin: 0 auto;
+    }
+    .donut-chart {
+      background: conic-gradient(
+        #10b981 0% 48%,
+        #f59e0b 48% 68%,
+        #ef4444 68% 90%,
+        #94a3b8 90% 100%
+      );
+      border-radius: 50%;
+    }
+  </style>
+</head>
+<body class="min-h-screen text-slate-800 flex items-center justify-center p-4 sm:p-6 lg:p-10 relative overflow-x-hidden">
+<!-- BEGIN: AmbientBackgroundDecorations -->
+<!-- Subtle circular green ambient shapes matching reference background -->
+<div class="absolute -top-32 -left-32 w-96 h-96 bg-brand-100 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
+<div class="absolute bottom-0 left-1/4 w-[34rem] h-[34rem] bg-brand-50 rounded-full blur-2xl opacity-70 pointer-events-none"></div>
+<!-- END: AmbientBackgroundDecorations -->
+<!-- BEGIN: MainContainer -->
+<main class="w-full max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start relative z-10">
+<!-- BEGIN: LeftHeroSection -->
+<section class="lg:col-span-7 flex flex-col justify-between pt-2">
+<!-- Header Brand Logo -->
+<div class="flex items-center gap-2 mb-8">
+<svg class="w-8 h-8 text-brand-600 fill-current" viewbox="0 0 36 36">
+<circle cx="18" cy="18" fill="#059669" r="16"></circle>
+<path d="M12 18.5L16.5 23L24 13.5" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.5"></path>
+</svg>
+<span class="text-2xl font-extrabold tracking-tight text-[#064e3b]">CreditFlow</span>
+</div>
+<!-- Kicker & Hero Title -->
+<div class="space-y-4 max-w-xl">
+<p class="text-xs font-bold tracking-wider text-slate-500 uppercase">
+          Grow your business with better control
+        </p>
+<h1 class="text-4xl sm:text-5xl font-extrabold text-[#0d1e32] tracking-tight leading-[1.15]">
+          Simple Credit Management for Growing Businesses
+        </h1>
+<p class="text-base text-slate-600 leading-relaxed pt-1">
+          Create your free account and start managing customer credit, invoices, payments and outstanding balances in one place.
+        </p>
+</div>
+<!-- 3 Key Features Row -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-6 my-10 max-w-xl">
+<!-- Feature 1 -->
+<div class="flex flex-col items-start">
+<div class="w-12 h-12 rounded-2xl bg-emerald-100 text-brand-700 flex items-center justify-center mb-3 shadow-xs">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<h3 class="font-bold text-slate-900 text-sm">Track Credit Sales</h3>
+<p class="text-xs text-slate-500 mt-1 leading-snug">Create invoices and keep customer records organized.</p>
+</div>
+<!-- Feature 2 -->
+<div class="flex flex-col items-start">
+<div class="w-12 h-12 rounded-2xl bg-emerald-100 text-brand-700 flex items-center justify-center mb-3 shadow-xs">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<h3 class="font-bold text-slate-900 text-sm">Monitor Payments</h3>
+<p class="text-xs text-slate-500 mt-1 leading-snug">See who has paid, who is due, and who is overdue.</p>
+</div>
+<!-- Feature 3 -->
+<div class="flex flex-col items-start">
+<div class="w-12 h-12 rounded-2xl bg-emerald-100 text-brand-700 flex items-center justify-center mb-3 shadow-xs">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<h3 class="font-bold text-slate-900 text-sm">Send Reminders</h3>
+<p class="text-xs text-slate-500 mt-1 leading-snug">Stay on top of outstanding balances with easy reminders.</p>
+</div>
+</div>
+<!-- BEGIN: LaptopMockupWithSurroundings -->
+<div class="relative mt-2 lg:mt-6 pb-6 select-none">
+<!-- Potted Plant on the Left side -->
+<div class="absolute -left-12 bottom-4 hidden md:flex flex-col items-center z-20 pointer-events-none">
+<div class="relative w-20 h-32">
+<!-- Plant Leaves -->
+<div class="absolute bottom-12 left-2 w-8 h-20 bg-emerald-800 rounded-full transform -rotate-25 shadow-md"></div>
+<div class="absolute bottom-12 left-5 w-8 h-24 bg-emerald-700 rounded-full transform -rotate-10 shadow-md"></div>
+<div class="absolute bottom-12 left-9 w-9 h-24 bg-emerald-600 rounded-full transform rotate-12 shadow-md"></div>
+<div class="absolute bottom-12 left-12 w-8 h-18 bg-emerald-700 rounded-full transform rotate-30 shadow-md"></div>
+<!-- Pot -->
+<div class="absolute bottom-0 left-3 w-16 h-14 bg-white rounded-b-xl border border-slate-200 shadow-md"></div>
+</div>
+</div>
+<!-- Coffee Mug on the Right side -->
+<div class="absolute -right-4 bottom-5 hidden md:flex flex-col items-center z-20 pointer-events-none">
+<div class="relative w-16 h-20 bg-white rounded-md border border-slate-200 shadow-lg flex items-center justify-center">
+<!-- Handle -->
+<div class="absolute -right-3 top-3 w-4 h-10 border-4 border-slate-200 rounded-r-md"></div>
+<!-- Branded Logo on Mug -->
+<div class="w-6 h-6 rounded-full bg-emerald-600 flex items-center justify-center">
+<svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></path>
+</svg>
+</div>
+</div>
+</div>
+<!-- Laptop Hardware Frame -->
+<div class="w-full max-w-[580px] mx-auto">
+<!-- Laptop Screen -->
+<div class="laptop-frame bg-white p-1 text-[10px] overflow-hidden">
+<!-- Web Dashboard Interface inside Mockup -->
+<div class="bg-slate-50 rounded-sm flex h-[280px]">
+<!-- Dashboard Sidebar -->
+<aside class="w-36 bg-white border-r border-slate-200 p-2.5 flex flex-col justify-between hidden sm:flex">
+<div class="space-y-3">
+<!-- Dashboard Logo -->
+<div class="flex items-center gap-1.5 pb-1 border-b border-slate-100">
+<span class="w-3.5 h-3.5 rounded-full bg-emerald-600 flex items-center justify-center text-[7px] text-white">✓</span>
+<span class="font-bold text-[10px] text-slate-800">CreditFlow</span>
+</div>
+<!-- Nav Links -->
+<nav class="space-y-0.5">
+<div class="flex items-center gap-1.5 px-2 py-1 bg-emerald-50 text-emerald-700 font-semibold rounded">
+<span>❖</span> Overview
+                    </div>
+<div class="flex items-center gap-1.5 px-2 py-1 text-slate-500 hover:text-slate-700">
+<span>👥</span> Customers
+                    </div>
+<div class="flex items-center gap-1.5 px-2 py-1 text-slate-500 hover:text-slate-700">
+<span>📄</span> Invoices
+                    </div>
+<div class="flex items-center gap-1.5 px-2 py-1 text-slate-500 hover:text-slate-700">
+<span>💳</span> Payments
+                    </div>
+<div class="flex items-center gap-1.5 px-2 py-1 text-slate-500 hover:text-slate-700">
+<span>📖</span> Credit Ledger
+                    </div>
+<div class="flex items-center gap-1.5 px-2 py-1 text-slate-500 hover:text-slate-700">
+<span>🔔</span> Reminders
+                    </div>
+<div class="flex items-center gap-1.5 px-2 py-1 text-slate-500 hover:text-slate-700">
+<span>📊</span> Reports
+                    </div>
+<div class="flex items-center gap-1.5 px-2 py-1 text-slate-500 hover:text-slate-700">
+<span>📦</span> Products &amp; Services
+                    </div>
+</nav>
+</div>
+<div class="text-slate-400 px-2 py-1 flex items-center gap-1">
+<span>⚙️</span> Settings
+                </div>
+</aside>
+<!-- Dashboard Main Area -->
+<div class="flex-1 flex flex-col p-3 overflow-hidden bg-[#fafcfb]">
+<!-- Top Nav inside Screen -->
+<div class="flex items-center justify-between pb-2 border-b border-slate-200/60">
+<div class="flex items-center gap-1 text-[9px] text-slate-400 bg-white border border-slate-200 px-2 py-0.5 rounded-md w-48">
+<span>🔍</span> Search customers, invoices or anything...
+                  </div>
+<div class="flex items-center gap-2">
+<span class="text-[9px] font-semibold bg-white border border-slate-200 px-1.5 py-0.5 rounded">PKR ▾</span>
+<span class="relative text-[10px]">🔔<span class="w-1.5 h-1.5 bg-red-500 rounded-full absolute -top-0.5 -right-0.5"></span></span>
+<span class="w-4 h-4 rounded-full bg-emerald-600 text-white font-bold text-[8px] flex items-center justify-center">AS</span>
+</div>
+</div>
+<!-- Welcome Greeting -->
+<div class="mt-2 mb-2">
+<h4 class="font-bold text-slate-900 text-xs leading-none">Good morning, Ali</h4>
+<p class="text-[8px] text-slate-400 mt-0.5">Here's what's happening with your business today.</p>
+</div>
+<!-- 3 Top KPI Cards -->
+<div class="grid grid-cols-3 gap-2 mb-2">
+<!-- Total Sales -->
+<div class="bg-white p-1.5 rounded-lg border border-slate-200/80 shadow-[0_1px_2px_rgba(0,0,0,0.02)]">
+<div class="flex items-center gap-1 text-slate-400 text-[8px]">
+<span class="text-emerald-500 font-bold">📊</span> Total Sales
+                    </div>
+<div class="font-bold text-slate-900 text-[10px] mt-0.5">PKR 1,850,000</div>
+<div class="text-[7px] text-emerald-600 font-semibold mt-0.5">↑ 12% <span class="text-slate-400">vs last month</span></div>
+</div>
+<!-- Outstanding Balance -->
+<div class="bg-white p-1.5 rounded-lg border border-slate-200/80 shadow-[0_1px_2px_rgba(0,0,0,0.02)]">
+<div class="flex items-center gap-1 text-slate-400 text-[8px]">
+<span class="text-red-500 font-bold">💳</span> Outstanding Balance
+                    </div>
+<div class="font-bold text-slate-900 text-[10px] mt-0.5">PKR 640,000</div>
+<div class="text-[7px] text-red-500 font-semibold mt-0.5">↑ 8% <span class="text-slate-400">vs last month</span></div>
+</div>
+<!-- Overdue Amount -->
+<div class="bg-white p-1.5 rounded-lg border border-slate-200/80 shadow-[0_1px_2px_rgba(0,0,0,0.02)]">
+<div class="flex items-center gap-1 text-slate-400 text-[8px]">
+<span class="text-amber-500 font-bold">⏰</span> Overdue Amount
+                    </div>
+<div class="font-bold text-slate-900 text-[10px] mt-0.5">PKR 315,000</div>
+<div class="text-[7px] text-red-500 font-semibold mt-0.5">↑ 24% <span class="text-slate-400">vs last month</span></div>
+</div>
+</div>
+<!-- Lower Section: Bar Chart & Donut Chart -->
+<div class="grid grid-cols-12 gap-2 flex-1">
+<!-- Bar Chart Area -->
+<div class="col-span-8 bg-white p-1.5 rounded-lg border border-slate-200/80 flex flex-col justify-between">
+<div class="flex justify-between items-center text-[8px]">
+<span class="font-bold text-slate-800">Sales and Payments</span>
+<div class="flex gap-2">
+<span class="text-emerald-500 flex items-center gap-0.5">● Sales</span>
+<span class="text-blue-500 flex items-center gap-0.5">● Payments</span>
+</div>
+</div>
+<!-- Chart Bars Representation -->
+<div class="flex items-end justify-between h-14 pt-2 px-1 text-[7px] text-slate-400 border-b border-slate-100">
+<div class="flex flex-col items-center gap-0.5">
+<div class="flex items-end gap-0.5">
+<div class="w-1.5 h-6 bg-emerald-500 rounded-t"></div>
+<div class="w-1.5 h-4 bg-blue-500 rounded-t"></div>
+</div>
+<span>May</span>
+</div>
+<div class="flex flex-col items-center gap-0.5">
+<div class="flex items-end gap-0.5">
+<div class="w-1.5 h-7 bg-emerald-500 rounded-t"></div>
+<div class="w-1.5 h-5 bg-blue-500 rounded-t"></div>
+</div>
+<span>Jun</span>
+</div>
+<div class="flex flex-col items-center gap-0.5">
+<div class="flex items-end gap-0.5">
+<div class="w-1.5 h-8 bg-emerald-500 rounded-t"></div>
+<div class="w-1.5 h-6 bg-blue-500 rounded-t"></div>
+</div>
+<span>Jul</span>
+</div>
+<div class="flex flex-col items-center gap-0.5">
+<div class="flex items-end gap-0.5">
+<div class="w-1.5 h-10 bg-emerald-500 rounded-t"></div>
+<div class="w-1.5 h-7 bg-blue-500 rounded-t"></div>
+</div>
+<span>Aug</span>
+</div>
+<div class="flex flex-col items-center gap-0.5">
+<div class="flex items-end gap-0.5">
+<div class="w-1.5 h-11 bg-emerald-500 rounded-t"></div>
+<div class="w-1.5 h-9 bg-blue-500 rounded-t"></div>
+</div>
+<span>Sep</span>
+</div>
+<div class="flex flex-col items-center gap-0.5">
+<div class="flex items-end gap-0.5">
+<div class="w-1.5 h-12 bg-emerald-500 rounded-t"></div>
+<div class="w-1.5 h-10 bg-blue-500 rounded-t"></div>
+</div>
+<span>Oct</span>
+</div>
+</div>
+</div>
+<!-- Donut Chart Area -->
+<div class="col-span-4 bg-white p-1.5 rounded-lg border border-slate-200/80 flex flex-col justify-between">
+<span class="font-bold text-slate-800 text-[8px]">Invoice Status</span>
+<div class="flex items-center gap-1.5 justify-center py-1">
+<!-- Donut -->
+<div class="w-12 h-12 donut-chart relative flex items-center justify-center">
+<div class="w-7 h-7 bg-white rounded-full flex flex-col items-center justify-center text-[7px] font-bold text-slate-800">
+<span class="text-[5px] text-slate-400 uppercase leading-none">Total</span>
+                          42
+                        </div>
+</div>
+<!-- Legend -->
+<div class="text-[7px] space-y-0.5 text-slate-600">
+<div class="flex items-center justify-between gap-1"><span><span class="text-emerald-500">●</span> Paid</span><b class="text-slate-800">20</b></div>
+<div class="flex items-center justify-between gap-1"><span><span class="text-amber-500">●</span> Pending</span><b class="text-slate-800">8</b></div>
+<div class="flex items-center justify-between gap-1"><span><span class="text-red-500">●</span> Overdue</span><b class="text-slate-800">10</b></div>
+<div class="flex items-center justify-between gap-1"><span><span class="text-slate-400">●</span> Draft</span><b class="text-slate-800">4</b></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Laptop Bottom Base -->
+<div class="laptop-base">
+<div class="laptop-notch"></div>
+</div>
+</div>
+</div>
+<!-- END: LaptopMockupWithSurroundings -->
+</section>
+<!-- END: LeftHeroSection -->
+<!-- BEGIN: RightSignUpCard -->
+<section class="lg:col-span-5 w-full">
+<div class="bg-white rounded-3xl p-8 sm:p-10 shadow-[0_15px_35px_-5px_rgba(0,0,0,0.06),0_0_0_1px_rgba(0,0,0,0.03)]">
+<!-- Header Branding in Form Card -->
+<div class="flex items-center gap-2 mb-6">
+<svg class="w-7 h-7 text-brand-600 fill-current" viewbox="0 0 36 36">
+<circle cx="18" cy="18" fill="#059669" r="16"></circle>
+<path d="M12 18.5L16.5 23L24 13.5" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.5"></path>
+</svg>
+<span class="text-xl font-bold tracking-tight text-[#064e3b]">CreditFlow</span>
+</div>
+<!-- Form Heading & Description -->
+<div class="mb-6">
+<h2 class="text-2xl sm:text-3xl font-extrabold text-[#0e1d30] tracking-tight">Create your account</h2>
+<p class="text-sm text-slate-500 mt-2 leading-relaxed">
+            Get started with CreditFlow and take control of your customer credit and payments.
+          </p>
+</div>
+<!-- Registration Form -->
+<form class="space-y-4" onsubmit="event.preventDefault();">
+<!-- Full Name Field -->
+<div>
+<label class="block text-xs font-semibold text-slate-700 mb-1.5" for="fullName">Full name</label>
+<div class="relative rounded-lg shadow-none">
+<div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<input class="block w-full pl-10 pr-3.5 py-2.5 text-sm text-slate-900 border border-slate-200 rounded-lg placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 bg-white" id="fullName" name="fullName" placeholder="Enter your full name" type="text"/>
+</div>
+</div>
+<!-- Work Email Field -->
+<div>
+<label class="block text-xs font-semibold text-slate-700 mb-1.5" for="workEmail">Work email address</label>
+<div class="relative rounded-lg shadow-none">
+<div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<input class="block w-full pl-10 pr-3.5 py-2.5 text-sm text-slate-900 border border-slate-200 rounded-lg placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 bg-white" id="workEmail" name="workEmail" placeholder="you@yourbusiness.com" type="email"/>
+</div>
+</div>
+<!-- Business Name Field -->
+<div>
+<label class="block text-xs font-semibold text-slate-700 mb-1.5" for="businessName">Business name</label>
+<div class="relative rounded-lg shadow-none">
+<div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<input class="block w-full pl-10 pr-3.5 py-2.5 text-sm text-slate-900 border border-slate-200 rounded-lg placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 bg-white" id="businessName" name="businessName" placeholder="Your business name" type="text"/>
+</div>
+</div>
+<!-- Password Field -->
+<div>
+<label class="block text-xs font-semibold text-slate-700 mb-1.5" for="password">Password</label>
+<div class="relative rounded-lg shadow-none">
+<div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<input class="block w-full pl-10 pr-10 py-2.5 text-sm text-slate-900 border border-slate-200 rounded-lg placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 bg-white" id="password" name="password" placeholder="Create a password" type="password"/>
+<button class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-600 focus:outline-none" type="button">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+</div>
+<!-- Password Strength Bar -->
+<div class="flex items-center justify-between gap-1.5 mt-2">
+<div class="flex items-center gap-1.5 flex-1">
+<span class="h-1 flex-1 bg-brand-500 rounded-full"></span>
+<span class="h-1 flex-1 bg-slate-200 rounded-full"></span>
+<span class="h-1 flex-1 bg-slate-200 rounded-full"></span>
+<span class="h-1 flex-1 bg-slate-200 rounded-full"></span>
+</div>
+<span class="text-[11px] font-semibold text-brand-600 pl-1">Strong</span>
+</div>
+</div>
+<!-- Confirm Password Field -->
+<div>
+<label class="block text-xs font-semibold text-slate-700 mb-1.5" for="confirmPassword">Confirm password</label>
+<div class="relative rounded-lg shadow-none">
+<div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<input class="block w-full pl-10 pr-10 py-2.5 text-sm text-slate-900 border border-slate-200 rounded-lg placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 bg-white" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" type="password"/>
+<button class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-600 focus:outline-none" type="button">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+</div>
+</div>
+<!-- Terms Checkbox -->
+<div class="flex items-center pt-1.5">
+<input checked="" class="h-4 w-4 text-emerald-600 focus:ring-emerald-500 border-slate-300 rounded cursor-pointer" id="terms" name="terms" type="checkbox"/>
+<label class="ml-2 block text-xs text-slate-600 cursor-pointer select-none" for="terms">
+              I agree to the <a class="text-emerald-700 underline hover:text-emerald-800" href="#">Terms of Service</a> and <a class="text-emerald-700 underline hover:text-emerald-800" href="#">Privacy Policy</a>
+</label>
+</div>
+<!-- Primary CTA Button -->
+<div class="pt-2">
+<button class="w-full bg-[#059669] hover:bg-[#047857] text-white font-semibold py-3 px-4 rounded-xl transition duration-150 flex items-center justify-center gap-2 shadow-sm text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-600" type="submit">
+<span>Create account</span>
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+</div>
+<!-- Divider -->
+<div class="relative my-5">
+<div class="absolute inset-0 flex items-center">
+<div class="w-full border-t border-slate-200"></div>
+</div>
+<div class="relative flex justify-center text-xs">
+<span class="bg-white px-3 text-slate-400 font-medium uppercase tracking-wider">OR</span>
+</div>
+</div>
+<!-- Sign In Link -->
+<div class="text-center text-xs text-slate-600">
+            Already have an account? 
+            <a class="font-bold text-emerald-700 hover:text-emerald-800 ml-1" href="#">Sign in</a>
+</div>
+</form>
+</div>
+</section>
+<!-- END: RightSignUpCard -->
+</main>
+<!-- END: MainContainer -->
+</body></html>
