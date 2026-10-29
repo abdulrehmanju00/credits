@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CreditFlow - Create Invoice</title>
+<!-- Tailwind CSS CDN with forms and container queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Custom Configuration -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#ecfdf5',
+              100: '#d1fae5',
+              200: '#a7f3d0',
+              500: '#10b981',
+              600: '#059669',
+              700: '#047857',
+              800: '#065f46',
+              900: '#064e3b',
+              emerald: '#00875a',
+            },
+            mint: {
+              50: '#f0fdf7',
+              100: '#e1f9ed',
+              200: '#c3f3db',
+            },
+            surface: {
+              base: '#f8fafc',
+              sidebar: '#ffffff',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<style data-purpose="custom-scroll-and-resets">
+    body {
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      background-color: #f7f9fb;
+    }
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  </style>
+</head>
+<body class="text-slate-800 antialiased min-h-screen flex bg-[#f8fafc]">
+<!-- BEGIN: Sidebar -->
+<aside class="w-64 bg-white border-r border-slate-200/80 shrink-0 flex flex-col justify-between min-h-screen sticky top-0 h-screen select-none" data-purpose="main-navigation-sidebar">
+<div class="p-6">
+<!-- App Logo -->
+<div class="flex items-center gap-2.5 mb-8 px-1">
+<svg class="w-8 h-8 text-[#00875a]" fill="none" viewbox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+<circle cx="16" cy="16" r="14" stroke="currentColor" stroke-dasharray="60 30" stroke-linecap="round" stroke-width="3"></circle>
+<circle cx="16" cy="16" fill="currentColor" r="8"></circle>
+</svg>
+<span class="text-2xl font-bold tracking-tight text-slate-900">CreditFlow</span>
+</div>
+<!-- Navigation Links -->
+<nav aria-label="Sidebar Navigation" class="space-y-1">
+<!-- Overview -->
+<a class="flex items-center gap-3.5 px-3.5 py-2.5 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-50 font-medium text-sm transition-colors" href="#">
+<svg class="w-5 h-5 text-slate-400 group-hover:text-slate-600" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+          Overview
+        </a>
+<!-- Customers -->
+<a class="flex items-center gap-3.5 px-3.5 py-2.5 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-50 font-medium text-sm transition-colors" href="#">
+<svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+          Customers
+        </a>
+<!-- Invoices (Active) -->
+<a class="flex items-center gap-3.5 px-3.5 py-2.5 rounded-xl bg-[#eaf7f0] text-[#00875a] font-semibold text-sm transition-colors" href="#">
+<svg class="w-5 h-5 text-[#00875a]" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+          Invoices
+        </a>
+<!-- Payments -->
+<a class="flex items-center gap-3.5 px-3.5 py-2.5 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-50 font-medium text-sm transition-colors" href="#">
+<svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+          Payments
+        </a>
+<!-- Credit Ledger -->
+<a class="flex items-center gap-3.5 px-3.5 py-2.5 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-50 font-medium text-sm transition-colors" href="#">
+<svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+          Credit Ledger
+        </a>
+<!-- Reminders -->
+<a class="flex items-center gap-3.5 px-3.5 py-2.5 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-50 font-medium text-sm transition-colors" href="#">
+<svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+          Reminders
+        </a>
+<!-- Reports -->
+<a class="flex items-center gap-3.5 px-3.5 py-2.5 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-50 font-medium text-sm transition-colors" href="#">
+<svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+          Reports
+        </a>
+<!-- Products & Services -->
+<a class="flex items-center gap-3.5 px-3.5 py-2.5 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-50 font-medium text-sm transition-colors" href="#">
+<svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+          Products &amp; Services
+        </a>
+<!-- Settings -->
+<a class="flex items-center gap-3.5 px-3.5 py-2.5 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-50 font-medium text-sm transition-colors" href="#">
+<svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+          Settings
+        </a>
+</nav>
+</div>
+<!-- Bottom Help & Support -->
+<div class="p-6 border-t border-slate-100">
+<a class="flex items-center gap-3.5 px-3 py-2 text-slate-600 hover:text-slate-900 font-medium text-sm transition-colors" href="#">
+<svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="9"></circle>
+<path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3m.08 4h.01" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+        Help &amp; Support
+      </a>
+</div>
+</aside>
+<!-- END: Sidebar -->
+<!-- BEGIN: Main Content Area -->
+<div class="flex-1 flex flex-col min-w-0 overflow-y-auto">
+<!-- BEGIN: Top Navigation Bar -->
+<header class="h-16 bg-white border-b border-slate-200/80 px-8 flex items-center justify-between sticky top-0 z-20">
+<!-- Search Input -->
+<div class="relative w-full max-w-lg">
+<span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+<input class="w-full pl-10 pr-4 py-2 bg-slate-50/70 border border-slate-200/90 rounded-lg text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-brand-emerald focus:border-brand-emerald transition-all" placeholder="Search customers, invoices or anything..." type="text"/>
+</div>
+<!-- Right Action Group -->
+<div class="flex items-center gap-5">
+<!-- Currency Pill -->
+<button class="flex items-center gap-2 px-3 py-1.5 border border-slate-200/90 rounded-lg bg-white text-xs font-semibold text-slate-700 hover:bg-slate-50 transition-colors" type="button">
+<span>PKR</span>
+<svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+<!-- Notification Bell with Alert Badge -->
+<button aria-label="Notifications" class="relative text-slate-500 hover:text-slate-700 transition-colors p-1" type="button">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full ring-2 ring-white"></span>
+</button>
+<!-- User Profile Pill -->
+<div class="flex items-center gap-3 cursor-pointer pl-1">
+<div class="w-9 h-9 rounded-full bg-[#00875a] text-white flex items-center justify-center font-bold text-xs">
+            AS
+          </div>
+<div class="text-left leading-tight hidden sm:block">
+<div class="text-sm font-semibold text-slate-900">Ali Shah</div>
+<div class="text-xs text-slate-400">Shah Traders</div>
+</div>
+<svg class="w-4 h-4 text-slate-400 hidden sm:block" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+</div>
+</header>
+<!-- END: Top Navigation Bar -->
+<!-- BEGIN: Main Page Content -->
+<main class="p-8 max-w-[1440px] mx-auto w-full">
+<!-- Breadcrumb and Page Header -->
+<div class="mb-7">
+<a class="inline-flex items-center text-sm font-medium text-[#00875a] hover:underline mb-3" href="#">
+<svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24">
+<path d="M10 19l-7-7m0 0l7-7m-7 7h18" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+          Back to Invoices
+        </a>
+<h1 class="text-3xl font-extrabold text-[#0f172a] tracking-tight">Create invoice</h1>
+<p class="text-slate-500 text-sm mt-1">Add customer, items and details to create a new invoice.</p>
+</div>
+<!-- Grid Layout: Left Column & Right Sidebar -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- BEGIN: Left Column (Forms & Table) -->
+<div class="lg:col-span-8 space-y-6">
+<!-- Card 1: Invoice Details -->
+<div class="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-sm" data-purpose="invoice-details-card">
+<h2 class="text-lg font-bold text-slate-900 mb-5">Invoice details</h2>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-4 mb-4">
+<!-- Customer Field -->
+<div class="md:col-span-7">
+<div class="flex items-center justify-between mb-1.5">
+<label class="text-xs font-semibold text-slate-700">Customer <span class="text-red-500">*</span></label>
+<button class="text-xs font-semibold text-[#00875a] hover:underline flex items-center gap-1" type="button">
+<span class="text-sm leading-none">+</span> Add new customer
+                  </button>
+</div>
+<div class="relative flex items-center border border-slate-200 rounded-xl px-3 py-2 bg-white hover:border-slate-300 transition-colors cursor-pointer">
+<div class="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center text-slate-500 mr-3 shrink-0">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div class="flex-1 min-w-0">
+<div class="text-sm font-semibold text-slate-900 truncate">Al-Hamza Traders</div>
+<div class="text-xs text-slate-400">Lahore, Punjab</div>
+</div>
+<svg class="w-4 h-4 text-slate-400 shrink-0 ml-2" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+</div>
+<!-- Invoice Number Field -->
+<div class="md:col-span-5">
+<label class="block text-xs font-semibold text-slate-700 mb-1.5">Invoice number <span class="text-red-500">*</span></label>
+<div class="relative flex items-center border border-slate-200 rounded-xl px-3 py-3.5 bg-slate-50/70">
+<input class="w-full bg-transparent border-0 p-0 text-sm font-medium text-slate-800 focus:ring-0" type="text" value="INV-2026-1051"/>
+<button class="text-slate-400 hover:text-slate-600 transition-colors p-0.5" type="button">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</div>
+</div>
+</div>
+<!-- Dates & Reference Row -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+<!-- Issue Date -->
+<div>
+<label class="block text-xs font-semibold text-slate-700 mb-1.5">Issue date <span class="text-red-500">*</span></label>
+<div class="flex items-center justify-between border border-slate-200 rounded-xl px-3 py-2.5 bg-white cursor-pointer hover:border-slate-300">
+<div class="flex items-center gap-2">
+<svg class="w-4 h-4 text-slate-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<rect height="18" rx="2" ry="2" width="18" x="3" y="4"></rect>
+<line x1="16" x2="16" y1="2" y2="6"></line>
+<line x1="8" x2="8" y1="2" y2="6"></line>
+<line x1="3" x2="21" y1="10" y2="10"></line>
+</svg>
+<span class="text-xs font-medium text-slate-800">28 Oct 2026</span>
+</div>
+<svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+</div>
+<!-- Due Date -->
+<div>
+<label class="block text-xs font-semibold text-slate-700 mb-1.5">Due date <span class="text-red-500">*</span></label>
+<div class="flex items-center justify-between border border-slate-200 rounded-xl px-3 py-2.5 bg-white cursor-pointer hover:border-slate-300">
+<div class="flex items-center gap-2">
+<svg class="w-4 h-4 text-slate-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<rect height="18" rx="2" ry="2" width="18" x="3" y="4"></rect>
+<line x1="16" x2="16" y1="2" y2="6"></line>
+<line x1="8" x2="8" y1="2" y2="6"></line>
+<line x1="3" x2="21" y1="10" y2="10"></line>
+</svg>
+<span class="text-xs font-medium text-slate-800">12 Nov 2026</span>
+</div>
+<svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+</div>
+<!-- Reference -->
+<div>
+<label class="block text-xs font-semibold text-slate-700 mb-1.5">Reference <span class="text-slate-400 font-normal">(Optional)</span></label>
+<div class="flex items-center border border-slate-200 rounded-xl px-3 py-2.5 bg-white">
+<svg class="w-4 h-4 text-slate-400 mr-2 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<input class="w-full bg-transparent border-0 p-0 text-xs text-slate-800 placeholder-slate-400 focus:ring-0" placeholder="e.g. PO number" type="text"/>
+</div>
+</div>
+</div>
+<!-- Notes Field -->
+<div>
+<label class="block text-xs font-semibold text-slate-700 mb-1.5">Notes <span class="text-slate-400 font-normal">(Optional)</span></label>
+<div class="relative border border-slate-200 rounded-xl p-3 bg-white focus-within:border-brand-emerald">
+<div class="flex items-start gap-2">
+<svg class="w-4 h-4 text-slate-400 mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<textarea class="w-full bg-transparent border-0 p-0 text-xs text-slate-800 placeholder-slate-400 focus:ring-0 resize-y" placeholder="Add any additional notes for this invoice..." rows="2"></textarea>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 2: Invoice Items Table -->
+<div class="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-sm" data-purpose="invoice-items-card">
+<h2 class="text-lg font-bold text-slate-900 mb-5">Invoice items</h2>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="text-[11px] font-semibold text-slate-600 border-b border-slate-100 pb-2">
+<th class="py-2 px-1 w-6">#</th>
+<th class="py-2 px-2 min-w-[170px]">Item / Product <span class="text-red-500">*</span></th>
+<th class="py-2 px-2 min-w-[150px]">Description <span class="text-slate-400 font-normal">(Optional)</span></th>
+<th class="py-2 px-2 w-16 text-center">Quantity</th>
+<th class="py-2 px-2 min-w-[100px]">Unit price (PKR)</th>
+<th class="py-2 px-2 min-w-[100px]">Amount (PKR)</th>
+<th class="py-2 px-1 w-8"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-transparent">
+<!-- Row 1 -->
+<tr>
+<td class="py-2.5 px-1 text-xs text-slate-400 font-medium">1</td>
+<td class="py-2.5 px-2">
+<div class="flex items-center justify-between border border-slate-200 rounded-lg px-2.5 py-2 text-xs font-medium text-slate-800 bg-white">
+<span>Split AC 1.5 Ton</span>
+<svg class="w-3.5 h-3.5 text-slate-400 ml-1.5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+</td>
+<td class="py-2.5 px-2">
+<input class="w-full border border-slate-200 rounded-lg px-2.5 py-2 text-xs text-slate-800 focus:border-brand-emerald focus:ring-0" type="text" value="Gree T3 Inverter"/>
+</td>
+<td class="py-2.5 px-2">
+<input class="w-full border border-slate-200 rounded-lg px-2 py-2 text-xs text-slate-800 text-center focus:border-brand-emerald focus:ring-0" type="text" value="2"/>
+</td>
+<td class="py-2.5 px-2">
+<input class="w-full border border-slate-200 rounded-lg px-2.5 py-2 text-xs text-slate-800 focus:border-brand-emerald focus:ring-0" type="text" value="75,000"/>
+</td>
+<td class="py-2.5 px-2">
+<input class="w-full border border-slate-200 rounded-lg px-2.5 py-2 text-xs text-slate-700 bg-slate-50 font-medium cursor-default" readonly="" type="text" value="150,000"/>
+</td>
+<td class="py-2.5 px-1 text-center">
+<button class="text-rose-500 hover:text-rose-700 transition-colors p-1" title="Delete Row" type="button">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr>
+<td class="py-2.5 px-1 text-xs text-slate-400 font-medium">2</td>
+<td class="py-2.5 px-2">
+<div class="flex items-center justify-between border border-slate-200 rounded-lg px-2.5 py-2 text-xs font-medium text-slate-800 bg-white">
+<span>Installation Service</span>
+<svg class="w-3.5 h-3.5 text-slate-400 ml-1.5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+</td>
+<td class="py-2.5 px-2">
+<input class="w-full border border-slate-200 rounded-lg px-2.5 py-2 text-xs text-slate-800 focus:border-brand-emerald focus:ring-0" type="text" value="AC installation"/>
+</td>
+<td class="py-2.5 px-2">
+<input class="w-full border border-slate-200 rounded-lg px-2 py-2 text-xs text-slate-800 text-center focus:border-brand-emerald focus:ring-0" type="text" value="2"/>
+</td>
+<td class="py-2.5 px-2">
+<input class="w-full border border-slate-200 rounded-lg px-2.5 py-2 text-xs text-slate-800 focus:border-brand-emerald focus:ring-0" type="text" value="5,000"/>
+</td>
+<td class="py-2.5 px-2">
+<input class="w-full border border-slate-200 rounded-lg px-2.5 py-2 text-xs text-slate-700 bg-slate-50 font-medium cursor-default" readonly="" type="text" value="10,000"/>
+</td>
+<td class="py-2.5 px-1 text-center">
+<button class="text-rose-500 hover:text-rose-700 transition-colors p-1" title="Delete Row" type="button">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr>
+<td class="py-2.5 px-1 text-xs text-slate-400 font-medium">3</td>
+<td class="py-2.5 px-2">
+<div class="flex items-center justify-between border border-slate-200 rounded-lg px-2.5 py-2 text-xs font-medium text-slate-800 bg-white">
+<span>Wall Bracket</span>
+<svg class="w-3.5 h-3.5 text-slate-400 ml-1.5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+</td>
+<td class="py-2.5 px-2">
+<input class="w-full border border-slate-200 rounded-lg px-2.5 py-2 text-xs text-slate-800 focus:border-brand-emerald focus:ring-0" type="text" value="Outdoor unit bracket"/>
+</td>
+<td class="py-2.5 px-2">
+<input class="w-full border border-slate-200 rounded-lg px-2 py-2 text-xs text-slate-800 text-center focus:border-brand-emerald focus:ring-0" type="text" value="2"/>
+</td>
+<td class="py-2.5 px-2">
+<input class="w-full border border-slate-200 rounded-lg px-2.5 py-2 text-xs text-slate-800 focus:border-brand-emerald focus:ring-0" type="text" value="2,500"/>
+</td>
+<td class="py-2.5 px-2">
+<input class="w-full border border-slate-200 rounded-lg px-2.5 py-2 text-xs text-slate-700 bg-slate-50 font-medium cursor-default" readonly="" type="text" value="5,000"/>
+</td>
+<td class="py-2.5 px-1 text-center">
+<button class="text-rose-500 hover:text-rose-700 transition-colors p-1" title="Delete Row" type="button">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Actions: Add & Clear -->
+<div class="mt-4 pt-2 flex items-center justify-between">
+<button class="inline-flex items-center gap-1.5 px-4 py-2 border border-[#00875a] text-[#00875a] hover:bg-[#ecfdf5] rounded-xl text-xs font-semibold transition-colors" type="button">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24">
+<path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+                Add item
+              </button>
+<button class="inline-flex items-center gap-1.5 px-3 py-2 text-slate-500 hover:text-rose-600 rounded-xl text-xs font-medium transition-colors" type="button">
+<svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+                Clear all items
+              </button>
+</div>
+</div>
+</div>
+<!-- END: Left Column -->
+<!-- BEGIN: Right Column (Summary & Bill To) -->
+<div class="lg:col-span-4 space-y-6">
+<!-- Card 1: Invoice Summary -->
+<div class="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-sm" data-purpose="invoice-summary-card">
+<h2 class="text-lg font-bold text-slate-900 mb-5">Invoice summary</h2>
+<div class="space-y-4">
+<!-- Subtotal -->
+<div class="flex items-center justify-between text-sm">
+<span class="text-slate-600 font-medium">Subtotal</span>
+<span class="text-slate-900 font-bold tracking-tight">PKR 165,000</span>
+</div>
+<!-- Discount -->
+<div>
+<label class="block text-xs font-semibold text-slate-700 mb-1.5">Discount <span class="text-slate-400 font-normal">(Optional)</span></label>
+<div class="flex items-center gap-2">
+<!-- Mode dropdown -->
+<div class="flex items-center justify-between border border-slate-200 rounded-lg px-2.5 py-2 bg-white text-xs text-slate-700 w-36">
+<span class="flex items-center gap-1.5">
+<span class="text-xs font-bold text-slate-400">%</span>
+                      Percentage
+                    </span>
+<svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<!-- Value Input -->
+<div class="flex items-center border border-slate-200 rounded-lg px-3 py-2 bg-white flex-1 min-w-[70px]">
+<input class="w-full border-0 p-0 text-xs text-slate-800 text-left focus:ring-0" type="text" value="0"/>
+<span class="text-xs text-slate-400 font-medium ml-1">%</span>
+</div>
+<!-- Calculated discount -->
+<div class="text-xs font-medium text-slate-600 whitespace-nowrap min-w-[65px] text-right">
+                    - PKR 0
+                  </div>
+</div>
+</div>
+<!-- Tax -->
+<div>
+<label class="block text-xs font-semibold text-slate-700 mb-1.5">Tax <span class="text-slate-400 font-normal">(Optional)</span></label>
+<div class="flex items-center gap-2">
+<!-- Mode dropdown -->
+<div class="flex items-center justify-between border border-slate-200 rounded-lg px-2.5 py-2 bg-white text-xs text-slate-700 w-36">
+<span class="flex items-center gap-1.5">
+<svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<rect height="14" rx="2" width="20" x="2" y="5"></rect>
+<line x1="2" x2="22" y1="10" y2="10"></line>
+</svg>
+                      Percentage
+                    </span>
+<svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<!-- Value Input -->
+<div class="flex items-center border border-slate-200 rounded-lg px-3 py-2 bg-white flex-1 min-w-[70px]">
+<input class="w-full border-0 p-0 text-xs text-slate-800 text-left focus:ring-0" type="text" value="0"/>
+<span class="text-xs text-slate-400 font-medium ml-1">%</span>
+</div>
+<!-- Calculated tax -->
+<div class="text-xs font-medium text-slate-600 whitespace-nowrap min-w-[65px] text-right">
+                    + PKR 0
+                  </div>
+</div>
+</div>
+<!-- Total Amount Highlight Box -->
+<div class="mt-6 pt-2">
+<div class="bg-[#dcf5e7] border border-[#b2ebd0] rounded-xl px-4 py-3.5 flex items-center justify-between">
+<span class="text-sm font-bold text-slate-900">Total Amount</span>
+<span class="text-lg font-extrabold text-slate-900">PKR 165,000</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 2: Bill To Customer Details -->
+<div class="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-sm" data-purpose="bill-to-card">
+<div class="flex items-center justify-between mb-3">
+<h3 class="text-base font-bold text-slate-900">Bill to</h3>
+<button class="text-xs font-semibold text-[#00875a] hover:underline flex items-center gap-1" type="button">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+                Edit
+              </button>
+</div>
+<div class="space-y-2">
+<div class="font-bold text-slate-900 text-sm">Al-Hamza Traders</div>
+<div class="text-xs text-slate-500 font-medium">Main Market, Lahore, Punjab</div>
+<div class="pt-2 flex flex-wrap gap-4 text-xs text-slate-600">
+<div class="flex items-center gap-1.5">
+<svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span>0321 7788990</span>
+</div>
+<div class="flex items-center gap-1.5">
+<svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span>info@alhamzatraders.pk</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 3: Notes Info Callout Banner -->
+<div class="bg-[#f0f7ff] border border-blue-100 rounded-2xl p-5 flex gap-3.5 items-start shadow-sm" data-purpose="notes-info-callout">
+<div class="w-7 h-7 rounded-full bg-[#1e75ff] text-white flex items-center justify-center shrink-0 mt-0.5 font-bold text-xs">
+              i
+            </div>
+<div>
+<h4 class="text-sm font-bold text-slate-900 mb-1">Notes</h4>
+<p class="text-xs text-slate-600 leading-relaxed">
+                This invoice will be created in PKR (Pakistani Rupee). You can edit the invoice number, dates and items before creating.
+              </p>
+</div>
+</div>
+<!-- Action Buttons Group -->
+<div class="grid grid-cols-12 gap-3 pt-2">
+<!-- Save Draft Button -->
+<button class="col-span-5 inline-flex items-center justify-center gap-2 px-4 py-3 bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 font-semibold text-xs rounded-xl shadow-sm transition-colors" type="button">
+<svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+              Save draft
+            </button>
+<!-- Create Invoice CTA Button -->
+<button class="col-span-7 inline-flex items-center justify-center gap-2 px-5 py-3 bg-[#00875a] hover:bg-[#047857] text-white font-semibold text-xs rounded-xl shadow-sm transition-colors" type="button">
+              Create invoice
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</div>
+</div>
+<!-- END: Right Column -->
+</div>
+</main>
+<!-- END: Main Page Content -->
+</div>
+<!-- END: Main Content Area -->
+</body></html>

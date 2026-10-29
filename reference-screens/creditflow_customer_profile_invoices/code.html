@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CreditFlow - Customer Detail</title>
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#ecfdf5',
+              100: '#d1fae5',
+              500: '#10b981',
+              600: '#059669',
+              700: '#047857',
+              800: '#065f46',
+              900: '#064e3b',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+<!-- Custom Typography & Layout Adjustments -->
+<style data-purpose="base-typography">
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    body {
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+  </style>
+</head>
+<body class="bg-[#F8FAFC] text-[#1E293B] antialiased">
+<div class="flex min-h-screen">
+<!-- BEGIN: Sidebar -->
+<aside class="w-64 bg-white border-r border-slate-200 flex flex-col justify-between shrink-0" data-purpose="primary-sidebar">
+<div>
+<!-- Logo Area -->
+<div class="h-20 flex items-center px-6 gap-3">
+<svg class="w-8 h-8 text-[#047857]" fill="none" viewbox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#D1FAE5" height="32" rx="16" width="32"></rect>
+<path d="M22 13C21.4 10.2 18.9 8 16 8C12.1 8 9 11.1 9 15C9 18.9 12.1 22 16 22C19.3 22 22 19.8 22 16.5H16" stroke="#047857" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path>
+</svg>
+<span class="text-2xl font-bold tracking-tight text-[#064E3B]">CreditFlow</span>
+</div>
+<!-- Navigation Links -->
+<nav class="mt-2 px-4 space-y-1">
+<!-- Overview -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors" href="#">
+<svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
+</svg>
+            Overview
+          </a>
+<!-- Customers (Active) -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-semibold text-[#047857] bg-[#E6F7F0] transition-colors" href="#">
+<svg class="w-5 h-5 text-[#047857]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+            Customers
+          </a>
+<!-- Invoices -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors" href="#">
+<svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
+</svg>
+            Invoices
+          </a>
+<!-- Payments -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors" href="#">
+<svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
+</svg>
+            Payments
+          </a>
+<!-- Credit Ledger -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors" href="#">
+<svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
+</svg>
+            Credit Ledger
+          </a>
+<!-- Reminders -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors" href="#">
+<svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
+</svg>
+            Reminders
+          </a>
+<!-- Reports -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors" href="#">
+<svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
+</svg>
+            Reports
+          </a>
+<!-- Products & Services -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors" href="#">
+<svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
+</svg>
+            Products &amp; Services
+          </a>
+<!-- Settings -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors" href="#">
+<svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
+<path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
+</svg>
+            Settings
+          </a>
+</nav>
+</div>
+<!-- Bottom Help & Support -->
+<div class="p-4 border-t border-slate-200">
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors" href="#">
+<svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
+</svg>
+          Help &amp; Support
+        </a>
+</div>
+</aside>
+<!-- END: Sidebar -->
+<!-- Main Container -->
+<div class="flex-1 flex flex-col min-w-0">
+<!-- BEGIN: TopBar -->
+<header class="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-8 z-10" data-purpose="top-header">
+<!-- Global Search Bar -->
+<div class="relative w-96">
+<div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+<svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<input class="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 transition-all" placeholder="Search customers, invoices or anything..." type="text"/>
+</div>
+<!-- Top Right Actions -->
+<div class="flex items-center gap-5">
+<!-- Currency Picker -->
+<div class="flex items-center gap-1.5 px-3 py-1.5 border border-slate-200 rounded-lg text-sm font-medium text-slate-700 bg-white cursor-pointer hover:bg-slate-50">
+<span>PKR</span>
+<svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<!-- Notification Bell -->
+<button class="relative p-2 text-slate-500 hover:text-slate-700 hover:bg-slate-100 rounded-lg transition-colors">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
+</svg>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full"></span>
+</button>
+<!-- User Profile -->
+<div class="flex items-center gap-3 cursor-pointer pl-2">
+<div class="w-9 h-9 rounded-full bg-[#047857] text-white flex items-center justify-center font-bold text-sm">
+              AS
+            </div>
+<div class="text-left leading-tight hidden sm:block">
+<div class="text-sm font-semibold text-slate-900">Ali Shah</div>
+<div class="text-xs text-slate-500">Shah Traders</div>
+</div>
+<svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+</div>
+</header>
+<!-- END: TopBar -->
+<!-- Scrollable Main Content -->
+<main class="flex-1 p-8 overflow-y-auto">
+<div class="max-w-[1400px] mx-auto space-y-6">
+<!-- BEGIN: Breadcrumb / Back Link -->
+<div class="flex items-center">
+<a class="inline-flex items-center gap-2 text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors" href="#">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M10 19l-7-7m0 0l7-7m-7 7h18" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+              Back to Customers
+            </a>
+</div>
+<!-- END: Breadcrumb / Back Link -->
+<!-- BEGIN: CustomerHeaderCard -->
+<section class="bg-white rounded-2xl border border-slate-200/80 p-6" data-purpose="customer-overview-card">
+<div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6">
+<!-- Left Profile Section -->
+<div class="flex items-start gap-5">
+<!-- Customer Avatar -->
+<div class="w-16 h-16 rounded-full bg-[#D1FAE5] text-[#047857] flex items-center justify-center text-2xl font-bold shrink-0">
+                  AT
+                </div>
+<!-- Customer Details -->
+<div class="space-y-1.5">
+<div class="flex items-center gap-3">
+<h1 class="text-2xl font-bold text-slate-900">Al-Hamza Traders</h1>
+<span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-600 border border-slate-200">Retailer</span>
+</div>
+<p class="text-sm font-medium text-slate-500">Lahore, Punjab</p>
+<p class="text-sm text-slate-600 max-w-2xl">
+                    Home appliances retailer dealing in ACs, LED TVs and kitchen appliances.
+                  </p>
+<!-- Metadata Icons -->
+<div class="flex flex-wrap items-center gap-6 pt-2 text-xs text-slate-600">
+<div class="flex items-center gap-1.5">
+<svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
+</svg>
+<span>0321 7788990</span>
+</div>
+<div class="flex items-center gap-1.5">
+<svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
+</svg>
+<span>info@alhamzatraders.pk</span>
+</div>
+<div class="flex items-center gap-1.5">
+<svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
+<path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
+</svg>
+<span>Main Market, Lahore, Punjab</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Actions & Status Block -->
+<div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 lg:self-start">
+<!-- Status Box -->
+<div class="bg-slate-50 border border-slate-200/80 rounded-xl p-3 text-left min-w-[170px]">
+<div class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-1">Customer Status</div>
+<div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-[#E6F7F0] text-[#047857] cursor-pointer">
+                    Active
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<div class="text-[11px] text-slate-400 mt-1">Customer since 12 Mar 2025</div>
+</div>
+<!-- Primary Action Buttons -->
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-2">
+<button class="inline-flex items-center justify-center gap-2 px-4 py-2 bg-[#047857] hover:bg-[#065F46] text-white rounded-lg text-sm font-medium transition-colors shadow-sm">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path>
+</svg>
+                      Create invoice
+                    </button>
+<button class="p-2 border border-slate-200 hover:bg-slate-50 rounded-lg text-slate-500 transition-colors">
+<svg class="w-4 h-4" fill="currentColor" viewbox="0 0 20 20">
+<path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"></path>
+</svg>
+</button>
+</div>
+<button class="w-full inline-flex items-center justify-center gap-2 px-4 py-2 bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 rounded-lg text-sm font-medium transition-colors">
+<svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+                    Record payment
+                  </button>
+</div>
+</div>
+</div>
+</section>
+<!-- END: CustomerHeaderCard -->
+<!-- BEGIN: MetricsCards -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5" data-purpose="metrics-summary-grid">
+<!-- Metric 1: Total Invoiced -->
+<div class="bg-white rounded-xl border border-slate-200/80 p-5 flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
+</svg>
+</div>
+<div>
+<p class="text-xs font-medium text-slate-500">Total Invoiced</p>
+<h3 class="text-lg font-bold text-slate-900 mt-0.5">PKR 480,000</h3>
+<p class="text-xs text-slate-400 mt-0.5">5 invoices</p>
+</div>
+</div>
+<!-- Metric 2: Total Paid -->
+<div class="bg-white rounded-xl border border-slate-200/80 p-5 flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-emerald-50 text-[#047857] flex items-center justify-center shrink-0">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
+</svg>
+</div>
+<div>
+<p class="text-xs font-medium text-slate-500">Total Paid</p>
+<h3 class="text-lg font-bold text-slate-900 mt-0.5">PKR 280,000</h3>
+<p class="text-xs text-slate-400 mt-0.5">3 payments</p>
+</div>
+</div>
+<!-- Metric 3: Balance Due -->
+<div class="bg-white rounded-xl border border-slate-200/80 p-5 flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-rose-50 text-red-500 flex items-center justify-center shrink-0">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
+</svg>
+</div>
+<div>
+<p class="text-xs font-medium text-slate-500">Balance Due</p>
+<h3 class="text-lg font-bold text-rose-600 mt-0.5">PKR 200,000</h3>
+<p class="text-xs text-slate-400 mt-0.5">2 outstanding invoices</p>
+</div>
+</div>
+<!-- Metric 4: Last Invoice -->
+<div class="bg-white rounded-xl border border-slate-200/80 p-5 flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
+</svg>
+</div>
+<div>
+<p class="text-xs font-medium text-slate-500">Last Invoice</p>
+<h3 class="text-lg font-bold text-slate-900 mt-0.5">15 Oct 2026</h3>
+<p class="text-xs text-slate-400 mt-0.5">INV-2026-1048</p>
+</div>
+</div>
+</section>
+<!-- END: MetricsCards -->
+<!-- BEGIN: SectionNavigationTabs -->
+<div class="border-b border-slate-200 flex gap-8" data-purpose="content-tabs">
+<button class="pb-3 text-sm font-medium text-slate-500 hover:text-slate-800 transition-colors">Overview</button>
+<button class="pb-3 text-sm font-semibold text-[#047857] border-b-2 border-[#047857] transition-colors">Invoices</button>
+<button class="pb-3 text-sm font-medium text-slate-500 hover:text-slate-800 transition-colors">Payments</button>
+<button class="pb-3 text-sm font-medium text-slate-500 hover:text-slate-800 transition-colors">Activity</button>
+</div>
+<!-- END: SectionNavigationTabs -->
+<!-- BEGIN: MainContentGrid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start" data-purpose="grid-invoices-and-timeline">
+<!-- Left Column: Invoices Table -->
+<div class="lg:col-span-8 bg-white border border-slate-200/80 rounded-2xl p-6 space-y-4">
+<!-- Invoices Header & Controls -->
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+<h2 class="text-base font-bold text-slate-900">Invoices (5)</h2>
+<div class="flex items-center gap-3 w-full sm:w-auto">
+<!-- Search within invoices -->
+<div class="relative flex-1 sm:w-60">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<input class="w-full pl-9 pr-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500" placeholder="Search invoices..." type="text"/>
+</div>
+<!-- Filter Dropdown Button -->
+<button class="inline-flex items-center gap-2 px-3 py-1.5 border border-slate-200 rounded-lg text-xs font-medium text-slate-700 bg-white hover:bg-slate-50">
+                    Filter
+                    <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+</div>
+</div>
+<!-- Invoices Table Container -->
+<div class="overflow-x-auto">
+<table class="w-full text-left text-xs">
+<thead>
+<tr class="text-slate-400 border-b border-slate-100 font-medium">
+<th class="py-3 px-3">Invoice No.</th>
+<th class="py-3 px-3">Issue Date</th>
+<th class="py-3 px-3">Due Date</th>
+<th class="py-3 px-3">Amount</th>
+<th class="py-3 px-3">Paid Amount</th>
+<th class="py-3 px-3">Balance</th>
+<th class="py-3 px-3">Status</th>
+<th class="py-3 px-3 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 text-slate-700 font-medium">
+<!-- Row 1 -->
+<tr class="hover:bg-slate-50/60 transition-colors">
+<td class="py-3.5 px-3 font-semibold text-slate-900">INV-2026-1048</td>
+<td class="py-3.5 px-3 text-slate-500">15 Oct 2026</td>
+<td class="py-3.5 px-3 text-slate-500">30 Oct 2026</td>
+<td class="py-3.5 px-3">PKR 120,000</td>
+<td class="py-3.5 px-3">PKR 0</td>
+<td class="py-3.5 px-3 text-rose-600 font-semibold">PKR 120,000</td>
+<td class="py-3.5 px-3">
+<span class="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-rose-50 text-rose-600">Overdue</span>
+</td>
+<td class="py-3.5 px-3 text-right">
+<button class="text-slate-400 hover:text-slate-600 font-bold">•••</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-slate-50/60 transition-colors">
+<td class="py-3.5 px-3 font-semibold text-slate-900">INV-2026-1042</td>
+<td class="py-3.5 px-3 text-slate-500">02 Oct 2026</td>
+<td class="py-3.5 px-3 text-slate-500">17 Oct 2026</td>
+<td class="py-3.5 px-3">PKR 85,000</td>
+<td class="py-3.5 px-3">PKR 0</td>
+<td class="py-3.5 px-3 text-rose-600 font-semibold">PKR 85,000</td>
+<td class="py-3.5 px-3">
+<span class="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-rose-50 text-rose-600">Overdue</span>
+</td>
+<td class="py-3.5 px-3 text-right">
+<button class="text-slate-400 hover:text-slate-600 font-bold">•••</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-slate-50/60 transition-colors">
+<td class="py-3.5 px-3 font-semibold text-slate-900">INV-2026-1031</td>
+<td class="py-3.5 px-3 text-slate-500">12 Sep 2026</td>
+<td class="py-3.5 px-3 text-slate-500">27 Sep 2026</td>
+<td class="py-3.5 px-3">PKR 95,000</td>
+<td class="py-3.5 px-3">PKR 95,000</td>
+<td class="py-3.5 px-3 text-emerald-600 font-semibold">PKR 0</td>
+<td class="py-3.5 px-3">
+<span class="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-emerald-50 text-emerald-600">Paid</span>
+</td>
+<td class="py-3.5 px-3 text-right">
+<button class="text-slate-400 hover:text-slate-600 font-bold">•••</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-slate-50/60 transition-colors">
+<td class="py-3.5 px-3 font-semibold text-slate-900">INV-2026-1025</td>
+<td class="py-3.5 px-3 text-slate-500">18 Aug 2026</td>
+<td class="py-3.5 px-3 text-slate-500">02 Sep 2026</td>
+<td class="py-3.5 px-3">PKR 100,000</td>
+<td class="py-3.5 px-3">PKR 100,000</td>
+<td class="py-3.5 px-3 text-emerald-600 font-semibold">PKR 0</td>
+<td class="py-3.5 px-3">
+<span class="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-emerald-50 text-emerald-600">Paid</span>
+</td>
+<td class="py-3.5 px-3 text-right">
+<button class="text-slate-400 hover:text-slate-600 font-bold">•••</button>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-slate-50/60 transition-colors">
+<td class="py-3.5 px-3 font-semibold text-slate-900">INV-2026-1018</td>
+<td class="py-3.5 px-3 text-slate-500">05 Aug 2026</td>
+<td class="py-3.5 px-3 text-slate-500">20 Aug 2026</td>
+<td class="py-3.5 px-3">PKR 80,000</td>
+<td class="py-3.5 px-3">PKR 80,000</td>
+<td class="py-3.5 px-3 text-emerald-600 font-semibold">PKR 0</td>
+<td class="py-3.5 px-3">
+<span class="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-emerald-50 text-emerald-600">Paid</span>
+</td>
+<td class="py-3.5 px-3 text-right">
+<button class="text-slate-400 hover:text-slate-600 font-bold">•••</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination Footer -->
+<div class="flex items-center justify-between pt-4 border-t border-slate-100 text-xs text-slate-500">
+<span>Showing 1 to 5 of 5 invoices</span>
+<div class="flex items-center gap-1.5">
+<button class="w-8 h-8 flex items-center justify-center rounded-lg border border-slate-200 text-slate-400 hover:bg-slate-50 transition-colors">
+                    &lt;
+                  </button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg bg-[#E6F7F0] text-[#047857] font-semibold border border-emerald-200">
+                    1
+                  </button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg border border-slate-200 text-slate-400 hover:bg-slate-50 transition-colors">
+                    &gt;
+                  </button>
+</div>
+</div>
+</div>
+<!-- Right Column: Recent Activity Feed -->
+<div class="lg:col-span-4 bg-white border border-slate-200/80 rounded-2xl p-6 flex flex-col justify-between">
+<div>
+<h2 class="text-base font-bold text-slate-900 mb-6">Recent Activity</h2>
+<!-- Activity Timeline List -->
+<div class="relative space-y-6 before:absolute before:inset-0 before:left-4 before:top-2 before:bottom-2 before:w-0.5 before:bg-slate-100">
+<!-- Timeline Item 1 -->
+<div class="relative flex items-start gap-4">
+<div class="w-8 h-8 rounded-full bg-rose-50 text-rose-500 border border-white flex items-center justify-center shrink-0 z-10">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<h4 class="text-xs font-semibold text-slate-800">Invoice created</h4>
+<span class="text-[11px] text-slate-400">15 Oct 2026<br/><span class="text-right block">10:24 AM</span></span>
+</div>
+<p class="text-xs text-slate-500 mt-0.5">INV-2026-1048 for PKR 120,000</p>
+</div>
+</div>
+<!-- Timeline Item 2 -->
+<div class="relative flex items-start gap-4">
+<div class="w-8 h-8 rounded-full bg-rose-50 text-rose-500 border border-white flex items-center justify-center shrink-0 z-10">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<h4 class="text-xs font-semibold text-slate-800">Invoice overdue</h4>
+<span class="text-[11px] text-slate-400">17 Oct 2026<br/><span class="text-right block">9:00 AM</span></span>
+</div>
+<p class="text-xs text-slate-500 mt-0.5">INV-2026-1042 is now overdue</p>
+</div>
+</div>
+<!-- Timeline Item 3 -->
+<div class="relative flex items-start gap-4">
+<div class="w-8 h-8 rounded-full bg-emerald-50 text-[#047857] border border-white flex items-center justify-center shrink-0 z-10">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<h4 class="text-xs font-semibold text-slate-800">Payment received</h4>
+<span class="text-[11px] text-slate-400">12 Sep 2026<br/><span class="text-right block">4:15 PM</span></span>
+</div>
+<p class="text-xs text-slate-500 mt-0.5">PKR 95,000 against INV-2026-1031</p>
+</div>
+</div>
+<!-- Timeline Item 4 -->
+<div class="relative flex items-start gap-4">
+<div class="w-8 h-8 rounded-full bg-blue-50 text-blue-500 border border-white flex items-center justify-center shrink-0 z-10">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<h4 class="text-xs font-semibold text-slate-800">Invoice created</h4>
+<span class="text-[11px] text-slate-400">12 Sep 2026<br/><span class="text-right block">11:20 AM</span></span>
+</div>
+<p class="text-xs text-slate-500 mt-0.5">INV-2026-1031 for PKR 95,000</p>
+</div>
+</div>
+<!-- Timeline Item 5 -->
+<div class="relative flex items-start gap-4">
+<div class="w-8 h-8 rounded-full bg-emerald-50 text-[#047857] border border-white flex items-center justify-center shrink-0 z-10">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<h4 class="text-xs font-semibold text-slate-800">Payment received</h4>
+<span class="text-[11px] text-slate-400">20 Aug 2026<br/><span class="text-right block">3:10 PM</span></span>
+</div>
+<p class="text-xs text-slate-500 mt-0.5">PKR 100,000 against INV-2026-1025</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Activity Card Bottom Action -->
+<div class="pt-6 mt-4">
+<a class="w-full inline-flex items-center justify-center gap-2 py-2 px-4 rounded-xl border border-emerald-600/30 text-xs font-semibold text-[#047857] hover:bg-[#E6F7F0]/40 transition-colors" href="#">
+                  View all activity
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</a>
+</div>
+</div>
+</div>
+<!-- END: MainContentGrid -->
+</div>
+</main>
+</div>
+</div>
+</body></html>

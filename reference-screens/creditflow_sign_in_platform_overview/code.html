@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CreditFlow - Sign In &amp; Manage Receivables</title>
+<!-- Google Fonts: Inter / Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN with forms and container queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#F0FDF4',
+              100: '#DCFCE7',
+              200: '#BBF7D0',
+              500: '#10B981',
+              600: '#059669',
+              700: '#047857',
+              800: '#065F46',
+              900: '#064E3B',
+            },
+            mintbg: '#EEFBF4',
+            darktext: '#0F172A',
+          }
+        }
+      }
+    }
+  </script>
+<!-- Custom Styles for Decorative Shapes & Charts -->
+<style data-purpose="custom-decorations">
+    .donut-chart {
+      background: conic-gradient(
+        #059669 0deg 171deg,
+        #F59E0B 171deg 240deg,
+        #F87171 240deg 325deg,
+        #CBD5E1 325deg 360deg
+      );
+      border-radius: 50%;
+    }
+  </style>
+</head>
+<body class="font-sans antialiased text-slate-800 bg-white min-h-screen">
+<!-- BEGIN: MainContainer -->
+<main class="min-h-screen flex flex-col lg:flex-row w-full overflow-hidden">
+<!-- BEGIN: LeftMarketingPanel -->
+<section class="lg:w-[57%] w-full bg-mintbg relative px-8 sm:px-14 lg:px-16 pt-10 pb-16 flex flex-col justify-between overflow-hidden border-r border-emerald-100/60" data-purpose="marketing-section">
+<!-- Decorative background glow blobs -->
+<div class="absolute -top-24 -left-24 w-96 h-96 bg-emerald-100/50 rounded-full blur-3xl pointer-events-none"></div>
+<div class="absolute top-1/2 -right-32 w-80 h-80 bg-teal-100/40 rounded-full blur-3xl pointer-events-none"></div>
+<!-- Top Section: Header, Hero Copy & Features -->
+<div class="relative z-10">
+<!-- Logo -->
+<header class="flex items-center gap-3 mb-10">
+<div class="w-10 h-10 rounded-full flex items-center justify-center text-brand-600">
+<svg class="w-9 h-9" fill="none" viewbox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+<circle cx="18" cy="18" r="14" stroke="#059669" stroke-dasharray="60 30" stroke-linecap="round" stroke-width="4.5"></circle>
+<path d="M12 18L18 24L24 12" stroke="#059669" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.5"></path>
+</svg>
+</div>
+<span class="text-2xl font-bold tracking-tight text-slate-900">CreditFlow</span>
+</header>
+<!-- Eyebrow Subtitle -->
+<p class="text-xs font-bold tracking-wider text-slate-500 uppercase mb-3">
+          Manage your receivables with ease
+        </p>
+<!-- Main Headline -->
+<h1 class="text-4xl sm:text-5xl lg:text-[46px] font-extrabold text-slate-950 leading-[1.15] tracking-tight mb-5">
+          Control Credit Sales.<br/>Get Paid Faster.
+        </h1>
+<!-- Product Value Proposition Description -->
+<p class="text-slate-600 text-[15px] sm:text-base leading-relaxed max-w-xl mb-8">
+          CreditFlow helps you manage customer credit, create invoices, track payments, monitor outstanding balances and send payment reminders — all in one simple platform.
+        </p>
+<!-- 3 Feature Highlight Badges -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-10 max-w-2xl">
+<!-- Feature 1 -->
+<div class="flex flex-col">
+<div class="w-11 h-11 rounded-xl bg-emerald-100/80 flex items-center justify-center text-brand-700 mb-3.5 shadow-sm">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<h3 class="text-sm font-bold text-slate-900 mb-1">Create &amp; Track Invoices</h3>
+<p class="text-xs text-slate-600 leading-normal">Issue invoices and track payments easily.</p>
+</div>
+<!-- Feature 2 -->
+<div class="flex flex-col">
+<div class="w-11 h-11 rounded-xl bg-emerald-100/80 flex items-center justify-center text-brand-700 mb-3.5 shadow-sm">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<h3 class="text-sm font-bold text-slate-900 mb-1">Manage Customers</h3>
+<p class="text-xs text-slate-600 leading-normal">Keep all customer credit records in one place.</p>
+</div>
+<!-- Feature 3 -->
+<div class="flex flex-col">
+<div class="w-11 h-11 rounded-xl bg-emerald-100/80 flex items-center justify-center text-brand-700 mb-3.5 shadow-sm">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<h3 class="text-sm font-bold text-slate-900 mb-1">Automate Reminders</h3>
+<p class="text-xs text-slate-600 leading-normal">Stay on top of overdue payments with reminders.</p>
+</div>
+</div>
+<!-- Embedded Dashboard UI Mockup Frame -->
+<div class="relative w-full max-w-2xl bg-white rounded-2xl shadow-xl shadow-slate-200/70 border border-slate-200/80 overflow-hidden text-slate-800" data-purpose="product-preview-mockup">
+<!-- Mockup Top Navbar -->
+<div class="px-4 py-2.5 border-b border-slate-100 flex items-center justify-between gap-3 bg-white">
+<div class="flex items-center gap-1.5 min-w-[110px]">
+<div class="w-4 h-4 rounded-full border-2 border-brand-600 flex items-center justify-center">
+<div class="w-1.5 h-1.5 bg-brand-600 rounded-full"></div>
+</div>
+<span class="text-xs font-bold text-slate-900 tracking-tight">CreditFlow</span>
+</div>
+<!-- Mock Search Bar -->
+<div class="flex-1 max-w-xs relative">
+<svg class="w-3 h-3 absolute left-2.5 top-2 text-slate-400" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path>
+</svg>
+<input class="w-full bg-slate-50 text-[10px] pl-7 pr-2 py-1 rounded-md border border-slate-200 text-slate-400 placeholder-slate-400 cursor-default" disabled="" placeholder="Search customers, invoices or anything..." type="text"/>
+</div>
+<!-- Mock Actions & Profile -->
+<div class="flex items-center gap-2">
+<span class="text-[10px] bg-slate-50 border border-slate-200 rounded px-1.5 py-0.5 text-slate-600 font-medium flex items-center gap-1">
+                PKR <svg class="w-2.5 h-2.5 text-slate-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</span>
+<div class="relative text-slate-500">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<div class="w-1.5 h-1.5 bg-red-500 rounded-full absolute -top-0.5 -right-0.5"></div>
+</div>
+<div class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[8px] flex items-center justify-center">
+                AS
+              </div>
+</div>
+</div>
+<!-- Mockup Main Layout (Sidebar + Content) -->
+<div class="flex">
+<!-- Mock Sidebar -->
+<aside class="w-32 border-r border-slate-100 bg-slate-50/50 p-2 text-[10px] space-y-1">
+<div class="flex items-center gap-1.5 px-2 py-1 bg-brand-100/70 text-brand-800 font-semibold rounded-md">
+<svg class="w-3 h-3" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+                Overview
+              </div>
+<div class="flex items-center gap-1.5 px-2 py-1 text-slate-600 hover:text-slate-900">
+<svg class="w-3 h-3" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+                Customers
+              </div>
+<div class="flex items-center gap-1.5 px-2 py-1 text-slate-600 hover:text-slate-900">
+<svg class="w-3 h-3" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+                Invoices
+              </div>
+<div class="flex items-center gap-1.5 px-2 py-1 text-slate-600 hover:text-slate-900">
+<svg class="w-3 h-3" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+                Payments
+              </div>
+<div class="flex items-center gap-1.5 px-2 py-1 text-slate-600">
+<svg class="w-3 h-3" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+                Credit Ledger
+              </div>
+<div class="flex items-center gap-1.5 px-2 py-1 text-slate-600">
+<svg class="w-3 h-3" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+                Reminders
+              </div>
+<div class="flex items-center gap-1.5 px-2 py-1 text-slate-600">
+<svg class="w-3 h-3" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+                Reports
+              </div>
+<div class="flex items-center gap-1.5 px-2 py-1 text-slate-600">
+<svg class="w-3 h-3" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+                Products &amp; Services
+              </div>
+<div class="flex items-center gap-1.5 px-2 py-1 text-slate-600">
+<svg class="w-3 h-3" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+                Settings
+              </div>
+</aside>
+<!-- Mock Dashboard View -->
+<div class="flex-1 p-3 bg-slate-50/30">
+<!-- Welcome Header -->
+<div class="mb-3">
+<h4 class="text-xs font-bold text-slate-900 leading-tight">Good morning, Ali</h4>
+<p class="text-[9px] text-slate-500">Here's what's happening with your business today.</p>
+</div>
+<!-- 3 Metric Cards Row -->
+<div class="grid grid-cols-3 gap-2 mb-3">
+<!-- Metric 1: Total Sales -->
+<div class="bg-emerald-50/40 border border-emerald-100/80 rounded-lg p-2">
+<div class="flex items-center gap-1.5 text-[9px] text-slate-600 mb-1">
+<span class="w-4 h-4 rounded bg-emerald-100 text-brand-600 flex items-center justify-center text-[8px] font-bold">↑</span>
+<span>Total Sales</span>
+</div>
+<div class="text-[11px] font-bold text-slate-900">PKR 1,850,000</div>
+<div class="text-[8px] text-emerald-600 font-semibold mt-0.5">↑ 12% <span class="text-slate-400 font-normal">vs last month</span></div>
+</div>
+<!-- Metric 2: Outstanding Balance -->
+<div class="bg-orange-50/40 border border-orange-100/80 rounded-lg p-2">
+<div class="flex items-center gap-1.5 text-[9px] text-slate-600 mb-1">
+<span class="w-4 h-4 rounded bg-orange-100 text-orange-600 flex items-center justify-center text-[8px] font-bold">⇄</span>
+<span>Outstanding Balance</span>
+</div>
+<div class="text-[11px] font-bold text-slate-900">PKR 640,000</div>
+<div class="text-[8px] text-red-500 font-semibold mt-0.5">↑ 8% <span class="text-slate-400 font-normal">vs last month</span></div>
+</div>
+<!-- Metric 3: Overdue Amount -->
+<div class="bg-rose-50/40 border border-rose-100/80 rounded-lg p-2">
+<div class="flex items-center gap-1.5 text-[9px] text-slate-600 mb-1">
+<span class="w-4 h-4 rounded bg-rose-100 text-rose-600 flex items-center justify-center text-[8px] font-bold">⏱</span>
+<span>Overdue Amount</span>
+</div>
+<div class="text-[11px] font-bold text-slate-900">PKR 315,000</div>
+<div class="text-[8px] text-red-500 font-semibold mt-0.5">↑ 24% <span class="text-slate-400 font-normal">vs last month</span></div>
+</div>
+</div>
+<!-- Analytical Charts Row -->
+<div class="grid grid-cols-5 gap-2">
+<!-- Sales & Payments Bar Chart (3/5 columns) -->
+<div class="col-span-3 bg-white p-2 rounded-lg border border-slate-100">
+<div class="flex items-center justify-between mb-2">
+<span class="text-[9px] font-bold text-slate-800">Sales and Payments</span>
+<div class="flex items-center gap-2 text-[7px] text-slate-500">
+<span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-brand-600"></span> Sales</span>
+<span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-teal-400"></span> Payments</span>
+</div>
+</div>
+<!-- Bar Chart Grid -->
+<div class="flex gap-2 h-20 items-end border-b border-l border-slate-100 pl-1 pb-1">
+<div class="flex flex-col justify-between h-full text-[6px] text-slate-400 -ml-1 pr-1">
+<span>800K</span>
+<span>600K</span>
+<span>400K</span>
+<span>200K</span>
+<span>0</span>
+</div>
+<!-- May -->
+<div class="flex-1 flex items-end justify-center gap-0.5 h-full">
+<div class="w-1.5 bg-brand-600 rounded-t-sm h-[40%]"></div>
+<div class="w-1.5 bg-teal-400 rounded-t-sm h-[30%]"></div>
+</div>
+<!-- Jun -->
+<div class="flex-1 flex items-end justify-center gap-0.5 h-full">
+<div class="w-1.5 bg-brand-600 rounded-t-sm h-[55%]"></div>
+<div class="w-1.5 bg-teal-400 rounded-t-sm h-[45%]"></div>
+</div>
+<!-- Jul -->
+<div class="flex-1 flex items-end justify-center gap-0.5 h-full">
+<div class="w-1.5 bg-brand-600 rounded-t-sm h-[60%]"></div>
+<div class="w-1.5 bg-teal-400 rounded-t-sm h-[50%]"></div>
+</div>
+<!-- Aug -->
+<div class="flex-1 flex items-end justify-center gap-0.5 h-full">
+<div class="w-1.5 bg-brand-600 rounded-t-sm h-[70%]"></div>
+<div class="w-1.5 bg-teal-400 rounded-t-sm h-[58%]"></div>
+</div>
+<!-- Sep -->
+<div class="flex-1 flex items-end justify-center gap-0.5 h-full">
+<div class="w-1.5 bg-brand-600 rounded-t-sm h-[75%]"></div>
+<div class="w-1.5 bg-teal-400 rounded-t-sm h-[62%]"></div>
+</div>
+<!-- Oct -->
+<div class="flex-1 flex items-end justify-center gap-0.5 h-full">
+<div class="w-1.5 bg-brand-600 rounded-t-sm h-[88%]"></div>
+<div class="w-1.5 bg-teal-400 rounded-t-sm h-[72%]"></div>
+</div>
+</div>
+<!-- Months labels -->
+<div class="flex justify-between pl-6 text-[7px] text-slate-400 mt-1">
+<span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span>
+</div>
+</div>
+<!-- Invoice Status Donut Chart (2/5 columns) -->
+<div class="col-span-2 bg-white p-2 rounded-lg border border-slate-100 flex flex-col justify-between">
+<div class="text-[9px] font-bold text-slate-800 mb-1">Invoice Status</div>
+<div class="flex items-center justify-between gap-1 my-1">
+<!-- Donut representation -->
+<div class="relative w-12 h-12 flex items-center justify-center">
+<div class="donut-chart w-12 h-12"></div>
+<div class="absolute w-7 h-7 bg-white rounded-full flex flex-col items-center justify-center">
+<span class="text-[6px] text-slate-400 -mb-0.5">Total</span>
+<span class="text-[8px] font-bold text-slate-800">42</span>
+</div>
+</div>
+<!-- Breakdown Legend -->
+<div class="text-[7px] space-y-0.5 text-slate-600 flex-1 pl-1">
+<div class="flex items-center justify-between">
+<span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> Paid</span>
+<span class="font-bold text-slate-800">20</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> Pending</span>
+<span class="font-bold text-slate-800">8</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-rose-400"></span> Overdue</span>
+<span class="font-bold text-slate-800">10</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-slate-300"></span> Draft</span>
+<span class="font-bold text-slate-800">4</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Handwritten Annotative Callout -->
+<div class="mt-4 flex items-center gap-2 pl-4 text-slate-700">
+<svg class="w-7 h-7 text-emerald-700" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M4 14C7 9 12 7 19 8M4 14L8 15M4 14L6 10" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
+</svg>
+<p class="text-xs sm:text-sm font-medium tracking-tight text-slate-700">
+            A simpler way to manage your business credit.
+          </p>
+</div>
+</div>
+</section>
+<!-- END: LeftMarketingPanel -->
+<!-- BEGIN: RightAuthPanel -->
+<section class="lg:w-[43%] w-full bg-white flex flex-col justify-center items-center px-6 sm:px-12 lg:px-16 py-12 relative" data-purpose="auth-section">
+<!-- Subtle Mint Radial Accent in top right -->
+<div class="absolute top-0 right-0 w-80 h-80 bg-emerald-50 rounded-bl-full pointer-events-none -z-0"></div>
+<div class="w-full max-w-[400px] z-10">
+<!-- Auth Header Logo -->
+<div class="flex items-center justify-center gap-3 mb-8">
+<div class="w-9 h-9 rounded-full flex items-center justify-center text-brand-600">
+<svg class="w-8 h-8" fill="none" viewbox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+<circle cx="18" cy="18" r="14" stroke="#059669" stroke-dasharray="60 30" stroke-linecap="round" stroke-width="4.5"></circle>
+<path d="M12 18L18 24L24 12" stroke="#059669" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.5"></path>
+</svg>
+</div>
+<span class="text-2xl font-bold tracking-tight text-slate-900">CreditFlow</span>
+</div>
+<!-- Titles -->
+<div class="text-center mb-8">
+<h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+            Sign in to your account
+          </h2>
+<p class="text-sm text-slate-500 mt-2">
+            Welcome back! Enter your details to continue.
+          </p>
+</div>
+<!-- Sign-in Form -->
+<form class="space-y-4" data-purpose="login-form" onsubmit="event.preventDefault();">
+<!-- Email Input -->
+<div>
+<label class="block text-xs font-semibold text-slate-800 mb-1.5" for="email">Email address</label>
+<div class="relative">
+<span class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none text-slate-400">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</span>
+<input class="w-full pl-10 pr-3.5 py-2.5 bg-white border border-slate-200 rounded-lg text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-600 transition" id="email" name="email" placeholder="yourname@company.com" required="" type="email"/>
+</div>
+</div>
+<!-- Password Input -->
+<div>
+<label class="block text-xs font-semibold text-slate-800 mb-1.5" for="password">Password</label>
+<div class="relative">
+<span class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none text-slate-400">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</span>
+<input class="w-full pl-10 pr-10 py-2.5 bg-white border border-slate-200 rounded-lg text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-600 transition" id="password" name="password" placeholder="Enter your password" required="" type="password"/>
+<button aria-label="Toggle password visibility" class="absolute inset-y-0 right-0 flex items-center pr-3.5 text-slate-400 hover:text-slate-600 focus:outline-none" type="button">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+</div>
+</div>
+<!-- Remember Me & Forgot Password Row -->
+<div class="flex items-center justify-between text-xs pt-1">
+<label class="flex items-center gap-2 cursor-pointer select-none">
+<input checked="" class="w-4 h-4 rounded text-brand-600 focus:ring-brand-500 border-slate-300 transition cursor-pointer" type="checkbox"/>
+<span class="text-slate-700 font-medium">Remember me</span>
+</label>
+<a class="text-brand-600 hover:text-brand-700 font-medium hover:underline" href="#">
+              Forgot password?
+            </a>
+</div>
+<!-- Submit Button -->
+<div class="pt-2">
+<button class="w-full py-3 px-4 bg-[#058b66] hover:bg-[#047756] text-white font-semibold rounded-lg shadow-sm hover:shadow transition duration-150 flex items-center justify-center gap-2 text-sm" type="submit">
+<span>Sign in</span>
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+</div>
+</form>
+<!-- Divider -->
+<div class="relative my-6">
+<div class="absolute inset-0 flex items-center">
+<div class="w-full border-t border-slate-200"></div>
+</div>
+<div class="relative flex justify-center text-xs">
+<span class="px-3 bg-white text-slate-400 font-medium tracking-wide">OR</span>
+</div>
+</div>
+<!-- Google OAuth Button -->
+<div>
+<button class="w-full py-2.5 px-4 bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 font-semibold rounded-lg text-sm transition duration-150 flex items-center justify-center gap-3 shadow-xs" type="button">
+<!-- Google "G" Colored SVG -->
+<svg class="w-4 h-4" viewbox="0 0 24 24">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"></path>
+</svg>
+<span>Sign in with Google</span>
+</button>
+</div>
+<!-- Footer Sign-up Link -->
+<p class="text-center text-xs text-slate-600 mt-8">
+          Don't have an account? 
+          <a class="font-bold text-brand-700 hover:text-brand-800 underline ml-0.5" href="#">Create account</a>
+</p>
+</div>
+</section>
+<!-- END: RightAuthPanel -->
+</main>
+<!-- END: MainContainer -->
+</body></html>
